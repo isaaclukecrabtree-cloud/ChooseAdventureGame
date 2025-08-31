@@ -1,23 +1,20 @@
-class Player:
+from lifeform import Lifeform
 
+class Player(Lifeform):
     def __init__(self, name, health=10, damage=1, charisma=1, stealth=0):
-        self.name = name
+        super().__init__(name, health, damage)
         self.max_health = health
-        self.health = health
         self.base_damage = damage
         self.charisma = charisma
         self.stealth = stealth
         self.weapon = None
 
-    def damage(self):
-        return self.base_damage + (self.weapon[1] if self.weapon else 0)
-
-    def take_damage(self, amount):
-        self.health = max(0, self.health - amount)
-
     def equip_weapon(self, weapon):
         self.weapon = weapon
         print(f"{self.name} equips the {weapon[0]} (+{weapon[1]} damage).")
+
+    def damage(self):
+        return self.base_damage + (self.weapon[1] if self.weapon else 0)
 
     def attack(self, enemy):
         enemy.take_damage(self.damage())

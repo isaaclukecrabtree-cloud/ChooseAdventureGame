@@ -1,4 +1,4 @@
-from Stats import Player
+from player import Player
 from foes import Enemy
 import events
 import tkinter as tk
@@ -11,10 +11,11 @@ print(f"Wizard: Ygtryal needs your help")
 def accept():
     window.destroy()
     print(f"{player_name}: I accept your quest to save Ygtryal!")
-    print(f"Wizard: Oh {player_name}, your kindness is truly appreciated in this time of need, please take this dagger as a token of my gratitude, farewell!")
+    print(f"Wizard: Oh {player_name}, your kindness is truly appreciated in this time of need, please take this 'dagger' as a token of my gratitude, farewell!")
     print("Damage +2!")
     print("Charisma +1!")
     player.charisma += 1
+    player.equip_weapon(("Dagger", 2))
 def decline():
     window.destroy()
     print(f"{player_name}: I decline this request.")

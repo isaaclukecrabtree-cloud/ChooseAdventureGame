@@ -1,9 +1,8 @@
-class Enemy:
+from lifeform import Lifeform
+class Enemy(Lifeform):
 
     def __init__(self, name="Goblin", health=5, damage=2):
-        self.name = name
-        self.health = health
-        self.damage = damage
+        super().__init__(name, health, damage)
 
     def attack(self, player):
         player.take_damage(self.damage)

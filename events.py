@@ -1,7 +1,6 @@
 import random
 from foes import Enemy
-from Stats import Player
-
+#class Event:
 def enemy_event(player):
     print("An enemy appears, prepare to fight!")
     enemy = Enemy("Goblin", health=5, damage=2)
