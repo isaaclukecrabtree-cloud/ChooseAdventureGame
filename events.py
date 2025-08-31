@@ -39,6 +39,7 @@ def building_event(player):
 
 def random_event(player):
     events = [enemy_event , safe_event, treasure_event, building_event]
+    #event = enemy_event
     event = random.choice(events)
     event(player)
 

@@ -20,8 +20,8 @@ class Player:
         print (f"{self.name} equips the {weapon[0]} (+{weapon[1]} damage).")
 
     def attack(self, enemy):
-        enemy.take_damage(self.damage)()
-        print (f"{self.name} attacks {enemy.name} for {self.damage} damage!.")
+        enemy.take_damage(self.damage())
+        print (f"{self.name} attacks {enemy.name} for {self.damage()} damage!.")
         if enemy.health <= 0:
             print (f"{enemy.name} has been defeated!")
 
@@ -37,5 +37,5 @@ class Player:
     def stats(self):
         return (f"Player: {self.name}\n"
                 f"Health: {self.health}\n"
-                f"Damage: {self.damage}\n"
+                f"Damage: {self.damage()}\n"
                 f"Charisma: {self.charisma}\n")
