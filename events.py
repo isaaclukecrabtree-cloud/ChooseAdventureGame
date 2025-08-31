@@ -3,7 +3,7 @@ from foes import Enemy
 from Stats import Player
 
 def enemy_event(player):
-    print ("An enemy appears, prepare to fight!")
+    print("An enemy appears, prepare to fight!")
     enemy = Enemy("Goblin", health=5, damage=2)
 
     while player.is_alive() and enemy.is_alive():
@@ -17,8 +17,8 @@ def enemy_event(player):
         print("Game Over")
 
 def safe_event(player):
-    print ("You find a clear and calm area to rest")
-    print (f"You awake feeling refreshed.")
+    print("You find a clear and calm area to rest")
+    print(f"You awake feeling refreshed.")
     player.heal(3)
 
 def treasure_event(player):
@@ -31,11 +31,11 @@ def treasure_event(player):
         ("Greatsword", 6),
     ]
     weapon = random.choice(weapons)
-    print (f"You found a treasure chest! You open it up to find a {weapon[0]}!")
+    print(f"You found a treasure chest! You open it up to find a {weapon[0]}!")
     player.equip_weapon(weapon)
 
 def building_event(player):
-    print ("A seemingly abandoned building can be seen in the distance, do you wish to explore it?")
+    print("A seemingly abandoned building can be seen in the distance, do you wish to explore it?")
 
 def random_event(player):
     events = [enemy_event , safe_event, treasure_event, building_event]

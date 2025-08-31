@@ -7,7 +7,7 @@ class Enemy:
 
     def attack(self, player):
         player.take_damage(self.damage)
-        print (f"{self.name} attacks {player.name} for {self.damage} damage!")
+        print(f"{self.name} attacks {player.name} for {self.damage} damage!")
 
     def is_alive(self):
         return self.health > 0
