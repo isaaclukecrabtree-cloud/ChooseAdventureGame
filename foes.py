@@ -8,13 +8,6 @@ class Enemy(Lifeform):
         player.take_damage(self.damage)
         print(f"{self.name} attacks {player.name} for {self.damage} damage!")
 
-    def is_alive(self):
-        return self.health > 0
-
-    def take_damage(self, amount):
-        self.health = max(0, self.health - amount)
-
-
     def stats(self):
         return (f"Enemy: {self.name}\n"
                 f"Health: {self.health}\n"

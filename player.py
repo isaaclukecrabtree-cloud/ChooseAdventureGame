@@ -13,14 +13,8 @@ class Player(Lifeform):
         self.weapon = weapon
         print(f"{self.name} equips the {weapon[0]} (+{weapon[1]} damage).")
 
-    def damage(self):
+    def get_damage(self):
         return self.base_damage + (self.weapon[1] if self.weapon else 0)
-
-    def attack(self, enemy):
-        enemy.take_damage(self.damage())
-        print(f"{self.name} attacks {enemy.name} for {self.damage()} damage!.")
-        if enemy.health <= 0:
-            print(f"{enemy.name} has been defeated!")
 
     def heal(self, amount):
         self.health += amount
@@ -28,11 +22,8 @@ class Player(Lifeform):
             self.health = self.max_health
         print(f"{self.name} healed for {amount}. Health is now: {self.health}/{self.max_health}.")
 
-    def is_alive(self):
-        return self.health > 0
-
     def stats(self):
         return (f"Player: {self.name}\n"
                 f"Health: {self.health}\n"
-                f"Damage: {self.damage()}\n"
+                f"Damage: {self.get_damage()}\n"
                 f"Charisma: {self.charisma}\n")
