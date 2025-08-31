@@ -1,6 +1,6 @@
 from lifeform import Lifeform
-class Enemy(Lifeform):
 
+class Enemy(Lifeform):
     def __init__(self, name="Goblin", health=5, damage=2):
         super().__init__(name, health, damage)
 
