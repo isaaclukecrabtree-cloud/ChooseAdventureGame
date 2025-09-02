@@ -1,6 +1,6 @@
 import random
 import tkinter as tk
-
+from player import Player
 from foes import Enemy
 #class Event:
 def enemy_event(player):
@@ -23,6 +23,13 @@ def safe_event(player):
     player.heal(3)
 
 def treasure_event(player):
+    rarities = {
+        "Common": 0,
+        "Uncommon": 1,
+        "Rare": 2,
+        "Epic": 3,
+        "Legendary": 5,
+    }
     weapons = [
         ("Dagger", 2),
         ("Axe", 3),
@@ -31,8 +38,13 @@ def treasure_event(player):
         ("Spear", 4),
         ("Greatsword", 6),
     ]
-    new_weapon = random.choice(weapons)
-    print(f"You found a treasure chest! You open it up to find a {new_weapon[0]} (+{new_weapon[1]} damage)!")
+    weapon_name, base_damage = random.choice(weapons)
+    rarity, bonus = random.choice(list(rarities.items()))
+
+    total_damage = base_damage + bonus
+    new_weapon = (f"{rarity} {weapon_name}", total_damage)
+    print (f"You found a {rarity} {weapon_name} (+{total_damage} damage)")
+
     if player.weapon:
         print(f"Your current weapon: {player.weapon[0]} (+{player.weapon[1]} damage).")
     else:
