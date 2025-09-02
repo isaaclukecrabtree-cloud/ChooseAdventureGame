@@ -55,7 +55,7 @@ def building_event(player):
     print("A seemingly abandoned building can be seen in the distance, do you wish to explore it?")
 
 def random_event(player):
-    events = [enemy_event , safe_event, treasure_event, building_event]
+    events = [enemy_event, safe_event, treasure_event, building_event]
     event = treasure_event
     #event = random.choice(events)
     event(player, events)
