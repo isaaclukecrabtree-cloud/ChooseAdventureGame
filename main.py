@@ -18,7 +18,7 @@ def accept():
     player.charisma += 1
     broken_dagger = Weapon(
         name = "Dagger",
-        rarity = "broken",
+        rarity = "Broken",
         damage = 1,
         colour =Colours.red
     )

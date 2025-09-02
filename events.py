@@ -32,11 +32,9 @@ def treasure_event(player, new_weapon):
     else:
         print("You are currently unarmed.")
 
-    player.weapon = new_weapon
-    print(f"{player.name} equips the {format_weapon(new_weapon)}")
-
     def accept_weapon():
         player.weapon = new_weapon
+        print(f"{player.name} equips the {format_weapon(new_weapon)}")
         window.destroy()
 
     def decline_weapon():
