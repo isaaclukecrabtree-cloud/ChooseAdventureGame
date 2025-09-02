@@ -1,4 +1,6 @@
 import random
+import tkinter as tk
+
 from foes import Enemy
 #class Event:
 def enemy_event(player):
@@ -29,16 +31,37 @@ def treasure_event(player):
         ("Spear", 4),
         ("Greatsword", 6),
     ]
-    weapon = random.choice(weapons)
-    print(f"You found a treasure chest! You open it up to find a {weapon[0]}!")
-    player.equip_weapon(weapon)
+    new_weapon = random.choice(weapons)
+    print(f"You found a treasure chest! You open it up to find a {new_weapon[0]} (+{new_weapon[1]} damage)!")
+    if player.weapon:
+        print(f"Your current weapon: {player.weapon[0]} (+{player.weapon[1]} damage).")
+    else:
+        print("You are currently unarmed.")
+
+    def accept_weapon():
+        player.equip_weapon(new_weapon)
+        window.destroy()
+
+    def decline_weapon():
+        print(f"{player.name} keeps their current equipment.")
+        window.destroy()
+
+    window = tk.Tk()
+    window.title("events.py")
+    window.attributes("-topmost", True)
+    tk.Label(window, text="You found treasure!").pack(pady=100)
+    tk.Button(window, text="Equip new weapon.", command=accept_weapon, width=50,
+              height=5).pack(side="left", padx=15, pady=15)
+    tk.Button(window, text="Keep current weapon.", command=decline_weapon,
+              width=50, height=5).pack(side="left", padx=15, pady=15)
+    window.mainloop()
 
 def building_event(player):
     print("A seemingly abandoned building can be seen in the distance, do you wish to explore it?")
 
 def random_event(player):
     events = [enemy_event , safe_event, treasure_event, building_event]
-    #event = enemy_event
-    event = random.choice(events)
+    event = treasure_event
+    #event = random.choice(events)
     event(player)
 
