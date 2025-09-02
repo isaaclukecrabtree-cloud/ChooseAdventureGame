@@ -1,7 +1,9 @@
 from player import Player
 from foes import Enemy
+from weapons import Weapon, Colours, format_weapon
 import events
 import tkinter as tk
+
 print("Wizard: Hello Traveller, what is your name?")
 player_name = input()
 player = Player(player_name, health=10, damage=1, charisma=1, stealth=0)
@@ -14,7 +16,14 @@ def accept():
     print(f"Wizard: Oh {player_name}, your kindness is truly appreciated in this time of need, please take this 'dagger' as a token of my gratitude, farewell!")
     print("Charisma +1!")
     player.charisma += 1
-    player.equip_weapon(("Dagger", 2))
+    broken_dagger = Weapon(
+        name = "Dagger",
+        rarity = "broken",
+        damage = 1,
+        colour =Colours.red
+    )
+    player.weapon = broken_dagger
+    print(f"{player_name} now wields {format_weapon(player.weapon)}")
 def decline():
     window.destroy()
     print(f"{player_name}: I decline this request.")

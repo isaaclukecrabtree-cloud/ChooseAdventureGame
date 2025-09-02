@@ -1,5 +1,4 @@
 from lifeform import Lifeform
-
 class Player(Lifeform):
     def __init__(self, name, health=10, damage=1, charisma=1, stealth=0):
         super().__init__(name, health, damage)
@@ -8,10 +7,6 @@ class Player(Lifeform):
         self.charisma = charisma
         self.stealth = stealth
         self.weapon = None
-
-    def equip_weapon(self, weapon):
-        self.weapon = weapon
-        print(f"{self.name} equips the {weapon[0]} (+{weapon[1]} damage).")
 
     def get_damage(self):
         return self.base_damage + (self.weapon[1] if self.weapon else 0)

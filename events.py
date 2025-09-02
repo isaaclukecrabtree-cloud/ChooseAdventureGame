@@ -1,7 +1,7 @@
 import random
 import tkinter as tk
-from player import Player
 from foes import Enemy
+from weapons import random_weapon, format_weapon
 #class Event:
 def enemy_event(player):
     print("An enemy appears, prepare to fight!")
@@ -22,36 +22,21 @@ def safe_event(player):
     print(f"You awake feeling refreshed.")
     player.heal(3)
 
-def treasure_event(player):
-    rarities = {
-        "Common": 0,
-        "Uncommon": 1,
-        "Rare": 2,
-        "Epic": 3,
-        "Legendary": 5,
-    }
-    weapons = [
-        ("Dagger", 2),
-        ("Axe", 3),
-        ("Sword", 4),
-        ("Club", 2),
-        ("Spear", 4),
-        ("Greatsword", 6),
-    ]
-    weapon_name, base_damage = random.choice(weapons)
-    rarity, bonus = random.choice(list(rarities.items()))
+def treasure_event(player, new_weapon):
+    new_weapon = random_weapon()
 
-    total_damage = base_damage + bonus
-    new_weapon = (f"{rarity} {weapon_name}", total_damage)
-    print (f"You found a {rarity} {weapon_name} (+{total_damage} damage)")
+    print(f"You found a {format_weapon(new_weapon)}")
 
     if player.weapon:
-        print(f"Your current weapon: {player.weapon[0]} (+{player.weapon[1]} damage).")
+        print(f"Current weapon: {format_weapon(player.weapon)}")
     else:
         print("You are currently unarmed.")
 
+    player.weapon = new_weapon
+    print(f"{player.name} equips the {format_weapon(new_weapon)}")
+
     def accept_weapon():
-        player.equip_weapon(new_weapon)
+        player.weapon = new_weapon
         window.destroy()
 
     def decline_weapon():
@@ -75,5 +60,5 @@ def random_event(player):
     events = [enemy_event , safe_event, treasure_event, building_event]
     event = treasure_event
     #event = random.choice(events)
-    event(player)
+    event(player, events)
 
