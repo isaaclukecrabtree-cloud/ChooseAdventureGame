@@ -22,19 +22,22 @@ class Player(Lifeform):
         self.base_damage = 2
         self.charisma = 1
         self.stealth = 4
-        self.health = 6
+        self.max_health = 6
+        self.health = self.max_health
     
     def set_class_warrior(self):
         self.base_damage = 3
         self.charisma = 1
         self.stealth = 1
-        self.health = 8
+        self.max_health = 9
+        self.health = self.max_health
     
     def set_class_tank(self):
         self.base_damage = 1
         self.charisma = 1
         self.stealth = 0
-        self.health = 13
+        self.max_health = 13
+        self.health = self.max_health
 
 
 

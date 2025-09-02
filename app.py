@@ -14,6 +14,9 @@ class Application(tk.Tk):
         self.right_button = None
         self.name_label = None
         self.health_label = None
+        self.damage_label = None
+        self.stealth_label = None
+        self.charisma_label = None
 
         self.configure_layout()
         self.setup_frames()
@@ -28,6 +31,9 @@ class Application(tk.Tk):
     def update_player_info(self, player):
         self.name_label.config(text=f"Name: {player.name}")
         self.health_label.config(text=f"Health: {player.health}/{player.max_health}")
+        self.damage_label.config(text=f"Damage: {player.damage}")
+        self.stealth_label.config(text=f"Stealth: {player.stealth}")
+        self.charisma_label.config(text=f"Charisma: {player.charisma}")
 
     def load_demo_event(self):
         self.scene_text.delete("1.0", tk.END)
@@ -74,6 +80,12 @@ class Application(tk.Tk):
     def setup_right_frame(self, frame):
         self.name_label = ttk.Label(frame, text="Name: ")
         self.health_label = ttk.Label(frame, text="Level: ")
+        self.damage_label = ttk.Label(frame, text="Damage: ")
+        self.stealth_label = ttk.Label(frame, text="Stealth: ")
+        self.charisma_label = ttk.Label(frame, text="Charisma: ")
 
         self.name_label.pack(anchor="n", pady=(0, 10))
-        self.health_label.pack(anchor="n")
+        self.health_label.pack(anchor="n"),
+        self.damage_label.pack(anchor="n"),
+        self.stealth_label.pack(anchor="n"),
+        self.charisma_label.pack(anchor="n")
