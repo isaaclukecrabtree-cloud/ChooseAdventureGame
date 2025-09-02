@@ -13,7 +13,7 @@ class Application(tk.Tk):
         self.left_button = None
         self.right_button = None
         self.name_label = None
-        self.level_label = None
+        self.health_label = None
 
         self.configure_layout()
         self.setup_frames()
@@ -27,7 +27,7 @@ class Application(tk.Tk):
 
     def update_player_info(self, player):
         self.name_label.config(text=f"Name: {player.name}")
-        self.level_label.config(text=f"Health: {player.health}/{player.max_health}")
+        self.health_label.config(text=f"Health: {player.health}/{player.max_health}")
 
     def load_demo_event(self):
         self.scene_text.delete("1.0", tk.END)
@@ -37,7 +37,7 @@ class Application(tk.Tk):
         self.right_button.config(text="Option 2")
 
         self.name_label.config(text="Name: Ninja")
-        self.level_label.config(text="Level: 1")
+        self.health_label.config(text="Level: 1")
 
     def configure_layout(self):
         self.columnconfigure(0, weight=1)
@@ -73,7 +73,7 @@ class Application(tk.Tk):
 
     def setup_right_frame(self, frame):
         self.name_label = ttk.Label(frame, text="Name: ")
-        self.level_label = ttk.Label(frame, text="Level: ")
+        self.health_label = ttk.Label(frame, text="Level: ")
 
         self.name_label.pack(anchor="n", pady=(0, 10))
-        self.level_label.pack(anchor="n")
+        self.health_label.pack(anchor="n")

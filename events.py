@@ -1,6 +1,6 @@
 import random
 import tkinter as tk
-from foes import Enemy
+from enemy import Enemy
 from weapons import random_weapon, format_weapon
 #class Event:
 def enemy_event(player):

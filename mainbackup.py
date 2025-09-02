@@ -1,5 +1,5 @@
 from player import Player
-from foes import Enemy
+from enemy import Enemy
 import events
 import tkinter as tk
 
