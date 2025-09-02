@@ -11,10 +11,10 @@ class Player(Lifeform):
 
     def equip_weapon(self, weapon):
         self.weapon = weapon
-        print (f"{self.name} equips the {weapon[0]} (+{weapon[1]} damage).")
+        print (f"{self.name} equips the {weapon.name} (+{weapon.damage} damage).")
 
     def get_damage(self):
-        return self.base_damage + (self.weapon[1] if self.weapon else 0)
+        return self.base_damage + (self.weapon.damage if self.weapon else 0)
 
     def stats(self):
         return (f"Player: {self.name}\n"
