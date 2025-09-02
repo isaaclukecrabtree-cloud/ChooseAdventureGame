@@ -2,7 +2,9 @@ import random
 import tkinter as tk
 from enemy import Enemy
 from weapons import random_weapon, format_weapon
+
 #class Event:
+
 def enemy_event(player):
     print("An enemy appears, prepare to fight!")
     enemy = Enemy("Goblin", health=5, damage=2)
@@ -11,6 +13,7 @@ def enemy_event(player):
         player.attack(enemy)
         if enemy.is_alive():
             enemy.attack(player)
+
     if player.is_alive():
         print(f"You defeated {enemy.name}!")
         print(player.stats())
