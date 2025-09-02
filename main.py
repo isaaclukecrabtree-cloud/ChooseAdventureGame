@@ -6,7 +6,9 @@ def character_create():
     print("Wizard: Hello Traveller, what is your name?")
     player_name = input()
     p = Player(player_name, health=10, damage=1, charisma=1, stealth=0)
+    p.set_class_assassin()
     return p
+
 
 if __name__ == "__main__":
     app = Application()
@@ -19,6 +21,7 @@ if __name__ == "__main__":
 
 
     player = character_create()
+    print(f"Welcome {player.base_damage}!")
     app.load_event(demo_event)
     app.update_player_info(player)
 

@@ -18,26 +18,23 @@ class Player(Lifeform):
                 f"Damage: {self.get_damage()}\n"
                 f"Charisma: {self.charisma}\n")
 
-def set_class_assassin(player):
-    player.base_damage = 2
-    player.charisma = 1
-    player.stealth = 4
-    player.health = 6
-    return player
-
-def set_class_warrior(player):
-    player.base_damage = 3
-    player.charisma = 1
-    player.stealth = 1
-    player.health = 8
-    return player
-
-def set_class_tank(player):
-    player.base_damage = 1
-    player.charisma = 1
-    player.stealth = 0
-    player.health = 13
-    return player
+    def set_class_assassin(self):
+        self.base_damage = 2
+        self.charisma = 1
+        self.stealth = 4
+        self.health = 6
+    
+    def set_class_warrior(self):
+        self.base_damage = 3
+        self.charisma = 1
+        self.stealth = 1
+        self.health = 8
+    
+    def set_class_tank(self):
+        self.base_damage = 1
+        self.charisma = 1
+        self.stealth = 0
+        self.health = 13
 
 
 
