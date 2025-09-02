@@ -21,6 +21,7 @@ if __name__ == "__main__":
         "option2": "Ignore him",
     }
 
+
     app.load_event(demo_event)
     app.update_player_info(player)
 

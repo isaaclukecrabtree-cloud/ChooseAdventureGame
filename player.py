@@ -9,6 +9,10 @@ class Player(Lifeform):
         self.stealth = stealth
         self.weapon = None
 
+    def equip_weapon(self, weapon):
+        self.weapon = weapon
+        print (f"{self.name} equips the {weapon[0]} (+{weapon[1]} damage).")
+
     def get_damage(self):
         return self.base_damage + (self.weapon[1] if self.weapon else 0)
 

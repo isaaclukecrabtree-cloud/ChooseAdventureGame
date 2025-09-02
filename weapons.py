@@ -10,11 +10,10 @@ class Colours:
     yellow = "\033[93m"
 
 class Weapon:
-    def __init__(self, name, rarity, damage,colour):
+    def __init__(self, name, damage):
         self.name = name
-        self.rarity = rarity
         self.damage = damage
-        self.colour = colour
+
 
 rarities = {
     "Broken":    (-1, Colours.red),
