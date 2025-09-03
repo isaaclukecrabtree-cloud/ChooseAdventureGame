@@ -9,7 +9,7 @@ class Application(tk.Tk):
         super().__init__()
         self.title("Text Adventure")
         self.geometry("500x300")
-
+#problem
         self.scenes = scenes if scenes is not None else {}
 
         self.scene_text = None

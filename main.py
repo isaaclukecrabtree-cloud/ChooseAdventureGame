@@ -16,7 +16,7 @@ if __name__ == "__main__":
     player = character_create()
     app.update_player_info(player)
     app.load_event("scene1")
-
+#problem
     app.mainloop()
     app.update_player_info(player)
     scenes = {
