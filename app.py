@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+
+import event
 from player import Player
 
 class Application(tk.Tk):
@@ -8,7 +10,8 @@ class Application(tk.Tk):
         self.title("Text Adventure")
         self.geometry("500x300")
 
-        # Declare stuff we want to reference later (like scene text so we can pass in event text)
+        self.scenes = scenes if scenes is not None else {}
+
         self.scene_text = None
         self.left_button = None
         self.right_button = None
@@ -21,12 +24,16 @@ class Application(tk.Tk):
         self.configure_layout()
         self.setup_frames()
 
-    def load_event(self, event):
+    def load_event(self, scene_id):
+        scene = self.scenes[scene_id]
         self.scene_text.delete("1.0", tk.END)
-        self.scene_text.insert(tk.END, event.get("scene_text", ""))
+        self.scene_text.insert(tk.END, scene("scene_text", ""))
 
-        self.left_button.config(text=event.get("option1", "Option 1"))
-        self.right_button.config(text=event.get("option2", "Option 2"))
+        self.left_button.config(text=event["option1"], command=lambda:
+        self.load_event(event["next1"]))
+
+        self.right_button.config(text=event["option2"], command=lambda:
+        self.load_event(event["next2"]))
 
     def update_player_info(self, player):
         self.name_label.config(text=f"Name: {player.name}")
