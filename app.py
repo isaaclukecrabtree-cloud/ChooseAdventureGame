@@ -39,6 +39,7 @@ class Application(tk.Tk):
         self.name_label.config(text=f"Name: {player.name}")
         self.health_label.config(text=f"Health: {player.health}/{player.max_health}")
         self.damage_label.config(text=f"Damage: {player.damage}")
+        self.damage_label.config(text=f"Damage: {player.damage}")
         self.stealth_label.config(text=f"Stealth: {player.stealth}")
         self.charisma_label.config(text=f"Charisma: {player.charisma}")
 
