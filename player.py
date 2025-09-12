@@ -1,13 +1,14 @@
 from lifeform import Lifeform
 
 class Player(Lifeform):
-    def __init__(self, name, health=10, damage=1, charisma=1, stealth=0):
-        super().__init__(name, health, damage)
-        self.max_health = health
-        self.base_damage = damage
-        self.charisma = charisma
-        self.stealth = stealth
-        self.weapon = None
+    def __init__(self, name):
+        self.name = name
+        self.character_class = None
+        self.health = 0
+        self.max_health = 0
+        self.base_damage = 0
+        self.charisma = 0
+        self.stealth = 0
 
     def equip_weapon(self, weapon):
         self.weapon = weapon
@@ -23,6 +24,7 @@ class Player(Lifeform):
                 f"Charisma: {self.charisma}\n")
 
     def set_class_assassin(self):
+        self.character_class = "Assassin"
         self.base_damage = 2
         self.charisma = 1
         self.stealth = 4
@@ -30,6 +32,7 @@ class Player(Lifeform):
         self.health = self.max_health
     
     def set_class_warrior(self):
+        self.character_class = "Warrior"
         self.base_damage = 3
         self.charisma = 1
         self.stealth = 1
@@ -37,6 +40,7 @@ class Player(Lifeform):
         self.health = self.max_health
     
     def set_class_tank(self):
+        self.character_class = "Tank"
         self.base_damage = 1
         self.charisma = 1
         self.stealth = 0
