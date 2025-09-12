@@ -9,7 +9,7 @@ Building Event dialogue
 
 Safe Event dialogue
     "You discover an abandoned camp with a firepit"
-    "You stumble across a tent, it looks abandones"
+    "You stumble across a tent, it looks abandoned"
     "As you continue down this path, you see a trail of smoke in the distance"
         NPC scene +/- 1 charisma for talking
     "The path leads you to a small village of farmers"
