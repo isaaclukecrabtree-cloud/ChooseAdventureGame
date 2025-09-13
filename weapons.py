@@ -45,12 +45,15 @@ class Weapon:
         self.weapon_type = weapon_type
         self.rarity = rarity
 
+    @property
     def name(self) -> str:
         return self.weapon_type.display_name
 
+    @property
     def total_damage(self) -> int:
         return self.weapon_type.base_damage + self.rarity.damage_bonus
 
+    @property
     def colour(self) -> str:
         return self.rarity.colour.value
 

@@ -1,7 +1,9 @@
 from lifeform import Lifeform
+from weapons import WeaponType, Rarity, Weapon, Colour
 
 class Player(Lifeform):
     def __init__(self, name):
+        super().__init__(name, 0, 0)
         self.name = name
         self.character_class = None
         self.health = 0
@@ -12,7 +14,7 @@ class Player(Lifeform):
 
     def equip_weapon(self, weapon):
         self.weapon = weapon
-        print (f"{self.name} equips the {weapon.name} (+{weapon.damage} damage).")
+        print(f"{self.name} picks up the {weapon.colour}{weapon.rarity.display_name} {weapon.name}{Colour.RESET.value} (+{weapon.total_damage} damage).")
 
     def get_damage(self):
         return self.base_damage + (self.weapon.damage if self.weapon else 0)
