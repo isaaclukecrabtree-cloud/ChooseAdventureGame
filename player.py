@@ -1,53 +1,23 @@
+from config import CharacterClass
 from lifeform import Lifeform
-from weapons import WeaponType, Rarity, Weapon, Colour
-
 class Player(Lifeform):
     def __init__(self, name):
-        super().__init__(name, 0, 0)
-        self.name = name
+        super().__init__(name, 1, 0)  # Temporary values
         self.character_class = None
-        self.health = 0
         self.max_health = 0
         self.base_damage = 0
         self.charisma = 0
         self.stealth = 0
+        self.weapon = None
+
+    def set_class(self, character_class: CharacterClass):
+        self.character_class = character_class.display_name
+        self.base_damage = character_class.base_damage
+        self.charisma = character_class.charisma
+        self.stealth = character_class.stealth
+        self.max_health = character_class.max_health
+        self.health = self.max_health
 
     def equip_weapon(self, weapon):
         self.weapon = weapon
-        print(f"{self.name} picks up the {weapon.colour}{weapon.rarity.display_name} {weapon.name}{Colour.RESET.value} (+{weapon.total_damage} damage).")
-
-    def get_damage(self):
-        return self.base_damage + (self.weapon.damage if self.weapon else 0)
-
-    def stats(self):
-        return (f"Player: {self.name}\n"
-                f"Health: {self.health}\n"
-                f"Damage: {self.get_damage()}\n"
-                f"Charisma: {self.charisma}\n")
-
-    def set_class_assassin(self):
-        self.character_class = "Assassin"
-        self.base_damage = 2
-        self.charisma = 1
-        self.stealth = 4
-        self.max_health = 6
-        self.health = self.max_health
-    
-    def set_class_warrior(self):
-        self.character_class = "Warrior"
-        self.base_damage = 3
-        self.charisma = 1
-        self.stealth = 1
-        self.max_health = 9
-        self.health = self.max_health
-    
-    def set_class_tank(self):
-        self.character_class = "Tank"
-        self.base_damage = 1
-        self.charisma = 1
-        self.stealth = 0
-        self.max_health = 13
-        self.health = self.max_health
-
-
-
+        print(f"{self.name} picks up the {weapon}")

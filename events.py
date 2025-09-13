@@ -1,7 +1,7 @@
 import random
 import tkinter as tk
 from enemy import Enemy
-from weapons import random_weapon, format_weapon
+from weapon import random_weapon, format_weapon
 
 #class Event:
 

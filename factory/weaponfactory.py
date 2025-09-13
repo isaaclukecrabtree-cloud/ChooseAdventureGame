@@ -1,5 +1,5 @@
-import weapons
-from weapons import Weapon
+import weapon
+from weapon import Weapon
 
 
 def create_dagger():
