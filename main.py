@@ -55,14 +55,14 @@ if __name__ == "__main__":
         player_weapon = Weapon(WeaponType.DAGGER, Rarity.BROKEN)
         game_player.charisma += 1
         game_player.equip_weapon(player_weapon)
-        valid_answer = True
     elif choice == "2":
         print("Wizard: I understand, this was merely a test of your heart, the quest lies before you nevertheless")
         print("-1 Charisma.")
         game_player.charisma -= 1
-        valid_answer = True
     else:
         print("Invalid choice")
+
+    print("As you ")
 
 
     Battle.start_battle(game_player, enemyfactory.create_josh())

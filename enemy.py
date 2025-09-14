@@ -5,6 +5,9 @@ class Enemy(Lifeform):
     def __init__(self, name="Goblin", health=5, damage=2):
         super().__init__(name, health, damage)
 
+    def attack_damage(self):
+        return self.damage
+
     def attack(self, player):
         player.take_damage(self.damage)
         print(f"{self.name} attacks {player.name} for {self.damage} damage!")
