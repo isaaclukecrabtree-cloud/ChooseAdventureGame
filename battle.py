@@ -3,22 +3,37 @@ import random
 
 
 class Battle:
-    @staticmethod
-    def start_battle(player, enemy):
-        while player.health > 0 and enemy.health > 0:
-            print(f"\n{player.name} HP: {player.health} | {enemy.name} HP: {enemy.health}")
+    def __init__(self, player, enemy):
+        self.player = player
+        self.enemy = enemy
 
-            Battle.player_turn(player, enemy)
-            Battle.enemy_turn(enemy, player)
+        self.start_battle()
+        self.end_battle()
 
-            if enemy.health <= 0:
-                print(f"\n{enemy.name} has been defeated!")
+    def start_battle(self):
+        # return immediately if player or enemy doesn't exist
+        if not (self.player and self.enemy):
+            print("Can't start battle, one or more entities unresolved.")
+            return
 
-            if player.health <= 0:
-                print(f"\n{player.name} has been defeated!")
+        # battle loop
+        while self.player.health > 0 and self.enemy.health > 0:
+            print(f"\n{self.player.name} HP: {self.player.health} | {self.enemy.name} HP: {self.enemy.health}")
 
-    @staticmethod
-    def player_turn(player, enemy):
+            self.__player_turn()
+            self.__enemy_turn()
+
+            if self.enemy.health <= 0:
+                print(f"\n{self.enemy.name} has been defeated!")
+
+            if self.player.health <= 0:
+                print(f"\n{self.player.name} has been defeated!")
+
+    def end_battle(self):
+        self.player = None
+        self.enemy = None
+
+    def __player_turn(self):
         print("Choose your move:")
         choice = get_multichoice_input([
             "Attack",
@@ -27,22 +42,21 @@ class Battle:
         ])
         match choice:
             case 1:
-                print(f"You attack enemy for {player.get_damage()} damage.")
-                enemy.take_damage(player.get_damage())
+                print(f"You attack enemy for {self.player.get_damage()} damage.")
+                self.enemy.take_damage(self.player.get_damage())
             case 2:
                 print("Defended")
-                player.blocking = True
+                self.player.blocking = True
             case 3:
                 print("Fled")
 
+    def __enemy_turn(self):
+        choice = random.choice([1, 2])
 
-    @staticmethod
-    def enemy_turn(enemy, player):
-        enemy_choice = random.choice([1, 2])
-
-        if enemy_choice == 1:
-            print(f"{enemy.name} attacks!")
-            player.take_damage(enemy.get_damage())
-        elif enemy_choice == 2:
-            print(f"{enemy.name} defends!")
-        enemy.blocking = True
+        match choice:
+            case 1:
+                print(f"{self.enemy.name} attacks!")
+                self.player.take_damage(self.enemy.get_damage())
+            case 2:
+                print(f"{self.enemy.name} defends!")
+                self.enemy.blocking = True
