@@ -1,7 +1,8 @@
 from player import Player
 from config import CharacterClass, MenuChoices
+from util.multichoiceinput import get_multichoice_input
 from weapon import WeaponType, Rarity, Weapon
-
+from util import *
 
 def choose_class():
     print("\nChoose your class:")
@@ -41,27 +42,22 @@ if __name__ == "__main__":
     print(
         f"Wizard: Well, {game_player.name}, i am afraid now is not a good time, an evil lurks in the shadows, waiting to destroy everything we know. I wish there was something i could do, alas, my bones grow old and i am no longer fit for the challenges that await.")
 
-    valid_answer = False
-    while not valid_answer:
-        print("1. Offer your assistance to the wizard")
-        print("2. Decline the wizard's cry for help")
-        print("3. Stare into the wizards eyes...")
+    choice = get_multichoice_input([
+        "Offer your assistance to the wizard",
+        "Decline the wizard's cry for help",
+    ])
 
-        choice = input("Enter your choice: ")
-
-        if choice == "1":
-            print("The wizard smiles and thanks you for your offer, he hands you a Broken Dagger")
-            print("+1 Damage!")
-            player_weapon = Weapon(WeaponType.DAGGER, Rarity.BROKEN)
-            game_player.charisma += 1
-            game_player.equip_weapon(player_weapon)
-            valid_answer = True
-        elif choice == "2":
-            print("Wizard: I understand, this was merely a test of your heart, the quest lies before you nevertheless")
-            print("-1 Charisma.")
-            game_player.charisma -= 1
-            valid_answer = True
-        elif choice == "3":
-            print("Wizard: ...Can i... Help you?...")
-        else:
-            print("Invalid choice")
+    if choice == "1":
+        print("The wizard smiles and thanks you for your offer, he hands you a Broken Dagger")
+        print("+1 Damage!")
+        player_weapon = Weapon(WeaponType.DAGGER, Rarity.BROKEN)
+        game_player.charisma += 1
+        game_player.equip_weapon(player_weapon)
+        valid_answer = True
+    elif choice == "2":
+        print("Wizard: I understand, this was merely a test of your heart, the quest lies before you nevertheless")
+        print("-1 Charisma.")
+        game_player.charisma -= 1
+        valid_answer = True
+    else:
+        print("Invalid choice")
