@@ -3,13 +3,14 @@ def get_multichoice_input(options):
         print(f"{index}. {option}")
     return get_valid_integer(len(options))
 
-def get_valid_integer(range):
+
+def get_valid_integer(length):
     while True:
         try:
-            choice = int(input(f"Choose (1-{range}): "))
-            if choice < 1 or choice > range:
+            choice = int(input(f"Enter choice (1-{length}): "))
+            if choice in range(length):
                 pass
             else:
-                return str(choice)
+                return choice
         except:
             print("Please enter a valid number.")
