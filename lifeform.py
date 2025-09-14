@@ -14,11 +14,8 @@ class Lifeform:
         self.health -= damage_taken
         self.blocking = False
 
-
-
     def get_damage(self):
         return self.base_damage
-
 
     def is_alive(self):
         return self.health > 0
