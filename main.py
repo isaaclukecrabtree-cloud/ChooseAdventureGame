@@ -3,6 +3,8 @@ from config import CharacterClass, MenuChoices
 from util.multichoiceinput import get_multichoice_input
 from weapon import WeaponType, Rarity, Weapon
 from util import *
+from battle import Battle
+from factory import enemyfactory
 
 def choose_class():
     print("\nChoose your class:")
@@ -61,3 +63,6 @@ if __name__ == "__main__":
         valid_answer = True
     else:
         print("Invalid choice")
+
+
+    Battle.start_battle(game_player, enemyfactory.create_josh())
