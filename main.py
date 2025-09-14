@@ -49,18 +49,17 @@ def start_game():
         "Decline the wizard's cry for help",
     ])
 
-    if choice == "1":
-        print("The wizard smiles and thanks you for your offer, he hands you a Broken Dagger")
-        print("+1 Damage!")
-        player_weapon = Weapon(WeaponType.DAGGER, Rarity.BROKEN)
-        game_player.charisma += 1
-        game_player.equip_weapon(player_weapon)
-    elif choice == "2":
-        print("Wizard: I understand, this was merely a test of your heart, the quest lies before you nevertheless")
-        print("-1 Charisma.")
-        game_player.charisma -= 1
-    else:
-        print("Invalid choice")
+    match choice:
+        case 1:
+            print("The wizard smiles and thanks you for your offer, he hands you a Broken Dagger")
+            print("+1 Damage!")
+            player_weapon = Weapon(WeaponType.DAGGER, Rarity.BROKEN)
+            game_player.charisma += 1
+            game_player.equip_weapon(player_weapon)
+        case 2:
+            print("Wizard: I understand, this was merely a test of your heart, the quest lies before you nevertheless")
+            print("-1 Charisma.")
+            game_player.charisma -= 1
 
 # endregion
 

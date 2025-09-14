@@ -9,7 +9,7 @@ def get_valid_integer(length):
         try:
             choice = int(input(f"\nEnter choice (1-{length}): \n"))
 
-            if choice in range(length):
+            if choice in range(1, length +1):
                 return choice
 
             print("Enter a valid number.")
