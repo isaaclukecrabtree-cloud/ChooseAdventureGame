@@ -6,7 +6,7 @@ class Player(Lifeform):
     def __init__(self, name="..."):
         super().__init__(name=name,
                          health=5,
-                         damage=1)
+                         base_damage=1)
         self.charisma = 0
         self.stealth = 0
 
