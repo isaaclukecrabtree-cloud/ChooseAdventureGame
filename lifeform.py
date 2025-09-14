@@ -23,7 +23,7 @@ class Lifeform:
         weapon_damage = 0
 
         if self.equipped_weapon:
-            weapon_damage = self.equipped_weapon.damage
+            weapon_damage = self.equipped_weapon.total_damage
 
         return base_damage + weapon_damage
 

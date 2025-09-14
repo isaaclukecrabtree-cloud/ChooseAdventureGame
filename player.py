@@ -21,7 +21,7 @@ class Player(Lifeform):
         self.health = self.max_health
 
     def equip_weapon(self, weapon):
-        self.weapon = weapon
+        self.equipped_weapon = weapon
         print(f"{self.name} picks up the {weapon}")
 
     def display_stats(self):
