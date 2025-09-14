@@ -25,13 +25,14 @@ class Battle:
             "Defend",
             "Flee"
         ])
-
-        if choice == "1":
-            print("Attacked")
-        elif choice == "2":
-            print("Defended")
-        elif choice == "3":
-            print("Fleed")
+        print(choice)
+        match choice:
+            case 1:
+                print("Attacked")
+            case 2:
+                print("Defended")
+            case 3:
+                print("Fleed")
 
     @staticmethod
     def enemy_turn(enemy):
