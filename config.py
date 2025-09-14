@@ -26,5 +26,4 @@ class MenuChoices:
             cls.ASSASSIN: CharacterClass.ASSASSIN,
             cls.WARRIOR: CharacterClass.WARRIOR,
             cls.TANK: CharacterClass.TANK
-
         }

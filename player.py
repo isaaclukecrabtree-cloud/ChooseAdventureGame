@@ -1,5 +1,7 @@
 from config import CharacterClass
 from lifeform import Lifeform
+
+
 class Player(Lifeform):
     def __init__(self, name):
         super().__init__(name, 1, 0)  # Temporary values

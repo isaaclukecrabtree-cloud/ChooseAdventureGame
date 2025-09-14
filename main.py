@@ -65,8 +65,3 @@ if __name__ == "__main__":
             print("Wizard: ...Can i... Help you?...")
         else:
             print("Invalid choice")
-
-
-
-
-
