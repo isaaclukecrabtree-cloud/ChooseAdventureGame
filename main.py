@@ -4,6 +4,8 @@ from util.multichoiceinput import get_multichoice_input
 from weapon import WeaponType, Rarity, Weapon
 from battle import Battle
 from factory import enemyfactory
+from enemy import Enemy
+
 
 # region
 
@@ -32,7 +34,6 @@ def character_create():
     print(f"Wizard: Ahh! So you are {player_name} the {new_player.character_class}")
     new_player.display_stats()
 
-
     return new_player
 
 
@@ -52,7 +53,6 @@ def start_game():
     match choice:
         case 1:
             print("The wizard smiles and thanks you for your offer, he hands you a Broken Dagger")
-            print("+1 Damage!")
             player_weapon = Weapon(WeaponType.DAGGER, Rarity.BROKEN)
             game_player.charisma += 1
             game_player.equip_weapon(player_weapon)
@@ -60,18 +60,12 @@ def start_game():
             print("Wizard: I understand, this was merely a test of your heart, the quest lies before you nevertheless")
             print("-1 Charisma.")
             game_player.charisma -= 1
+    return game_player
+
 
 # endregion
 
-
-def test_battle():
-    player = Player()
-    enemy = enemyfactory.create_goblin()
-    Battle.start_battle(player, enemy)
-
-
 if __name__ == "__main__":
-
-    start_game()
-
-    #test_battle()
+    game_player = start_game()
+    enemy = enemyfactory.create_goblin()
+    Battle(game_player, enemy)

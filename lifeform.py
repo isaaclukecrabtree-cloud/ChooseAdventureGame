@@ -1,9 +1,13 @@
+from weapon import Weapon, WeaponType
+
+
 class Lifeform:
     def __init__(self, name, health, base_damage):
         self.name = name
         self.health = health
         self.max_health = health
         self.base_damage = base_damage
+        self.equipped_weapon = None  # Add this line
 
         self.blocking = False
 
@@ -15,7 +19,13 @@ class Lifeform:
         self.blocking = False
 
     def get_damage(self):
-        return self.base_damage
+        base_damage = self.base_damage
+        weapon_damage = 0
+
+        if self.equipped_weapon:
+            weapon_damage = self.equipped_weapon.damage
+
+        return base_damage + weapon_damage
 
     def is_alive(self):
         return self.health > 0
