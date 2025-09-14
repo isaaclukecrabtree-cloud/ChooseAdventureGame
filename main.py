@@ -29,14 +29,9 @@ def character_create():
     selected_class = choose_class()
     new_player.set_class(selected_class)
 
-    print(f'''Wizard: Ahh! So you are {player_name} the {new_player.character_class}
-    Your character details:
-    Name: {new_player.name}
-    Class: {new_player.character_class}
-    Health: {new_player.health}/{new_player.max_health}
-    Damage: {new_player.base_damage}
-    Stealth: {new_player.stealth}
-    Charisma: {new_player.charisma}''')
+    print(f"Wizard: Ahh! So you are {player_name} the {new_player.character_class}")
+    new_player.display_stats()
+
 
     return new_player
 
@@ -60,12 +55,10 @@ def start_game():
         player_weapon = Weapon(WeaponType.DAGGER, Rarity.BROKEN)
         game_player.charisma += 1
         game_player.equip_weapon(player_weapon)
-        valid_answer = True
     elif choice == "2":
         print("Wizard: I understand, this was merely a test of your heart, the quest lies before you nevertheless")
         print("-1 Charisma.")
         game_player.charisma -= 1
-        valid_answer = True
     else:
         print("Invalid choice")
 
@@ -80,6 +73,6 @@ def test_battle():
 
 if __name__ == "__main__":
 
-    # start_game()
+    start_game()
 
-    test_battle()
+    #test_battle()

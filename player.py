@@ -23,3 +23,13 @@ class Player(Lifeform):
     def equip_weapon(self, weapon):
         self.weapon = weapon
         print(f"{self.name} picks up the {weapon}")
+
+    def display_stats(self):
+        print(f"""Your character details:
+            Name: {self.name},
+            Class: {self.character_class},
+            Health: {self.health}/{self.max_health},
+            Damage: {self.base_damage},
+            Stealth: {self.stealth},
+            Charisma: {self.charisma}
+        """)
