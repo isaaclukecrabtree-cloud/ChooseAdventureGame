@@ -2,9 +2,11 @@ from player import Player
 from config import CharacterClass, MenuChoices
 from util.multichoiceinput import get_multichoice_input
 from weapon import WeaponType, Rarity, Weapon
-from util import *
 from battle import Battle
 from factory import enemyfactory
+
+# region
+
 
 def choose_class():
     print("\nChoose your class:")
@@ -27,22 +29,25 @@ def character_create():
     selected_class = choose_class()
     new_player.set_class(selected_class)
 
-    print(f"Wizard: Ahh! So you are {player_name} the {new_player.character_class}")
+    print(f'''Wizard: Ahh! So you are {player_name} the {new_player.character_class}
+    Your character details:
+    Name: {new_player.name}
+    Class: {new_player.character_class}
+    Health: {new_player.health}/{new_player.max_health}
+    Damage: {new_player.base_damage}
+    Stealth: {new_player.stealth}
+    Charisma: {new_player.charisma}''')
+
     return new_player
 
 
-if __name__ == "__main__":
+def start_game():
     game_player = character_create()
-    print("Your character details:")
-    print(f"Name: {game_player.name}")
-    print(f"Class: {game_player.character_class}")
-    print(f"Health: {game_player.health}/{game_player.max_health}")
-    print(f"Damage: {game_player.base_damage}")
-    print(f"Stealth: {game_player.stealth}")
-    print(f"Charisma: {game_player.charisma}")
 
-    print(
-        f"Wizard: Well, {game_player.name}, i am afraid now is not a good time, an evil lurks in the shadows, waiting to destroy everything we know. I wish there was something i could do, alas, my bones grow old and i am no longer fit for the challenges that await.")
+    print(f"Wizard: Well, {game_player.name}, i am afraid now is not a good time,"
+          "an evil lurks in the shadows, waiting to destroy everything we know."
+          "I wish there was something i could do, alas,"
+          "my bones grow old and i am no longer fit for the challenges that await.")
 
     choice = get_multichoice_input([
         "Offer your assistance to the wizard",
@@ -64,5 +69,17 @@ if __name__ == "__main__":
     else:
         print("Invalid choice")
 
+# endregion
 
-    Battle.start_battle(game_player, enemyfactory.create_josh())
+
+def test_battle():
+    player = Player()
+    enemy = enemyfactory.create_josh()
+    Battle.start_battle(player, enemy)
+
+
+if __name__ == "__main__":
+
+    # start_game()
+
+    test_battle()
