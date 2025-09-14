@@ -2,8 +2,8 @@ from lifeform import Lifeform
 
 
 class Enemy(Lifeform):
-    def __init__(self, name="Goblin", health=5, damage=2):
-        super().__init__(name, health, damage)
+    def __init__(self, name="Unnamed Enemy", health=5, damage=1):
+        super().__init__(name=name, health=health, damage=damage)
 
     def attack_damage(self):
         return self.damage
