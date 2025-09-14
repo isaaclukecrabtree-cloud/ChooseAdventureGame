@@ -20,6 +20,7 @@ class Battle:
 
     @staticmethod
     def player_turn(player):
+        print("hello")
         choice = get_multichoice_input([
             "Attack",
             "Defend",

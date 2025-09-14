@@ -8,9 +8,11 @@ def get_valid_integer(length):
     while True:
         try:
             choice = int(input(f"Enter choice (1-{length}): "))
+
             if choice in range(length):
-                pass
-            else:
                 return choice
+
+            print("Enter a valid number.")
+
         except:
-            print("Please enter a valid number.")
+            pass
