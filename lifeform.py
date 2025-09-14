@@ -5,11 +5,20 @@ class Lifeform:
         self.max_health = health
         self.base_damage = base_damage
 
+        self.blocking = False
+
     def take_damage(self, damage):
-        self.health = max(0, self.health - damage)
+        damage_taken = damage
+        if self.blocking:
+            damage_taken /= 2
+        self.health -= damage_taken
+        self.blocking = False
+
+
 
     def get_damage(self):
         return self.base_damage
+
 
     def is_alive(self):
         return self.health > 0

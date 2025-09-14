@@ -1,4 +1,3 @@
-from util import *
 from util.multichoiceinput import get_multichoice_input
 import random
 
@@ -32,8 +31,10 @@ class Battle:
                 enemy.take_damage(player.get_damage())
             case 2:
                 print("Defended")
+                player.blocking = True
             case 3:
-                print("Fleed")
+                print("Fled")
+
 
     @staticmethod
     def enemy_turn(enemy, player):
@@ -44,3 +45,4 @@ class Battle:
             player.take_damage(enemy.get_damage())
         elif enemy_choice == 2:
             print(f"{enemy.name} defends!")
+        enemy.blocking = True

@@ -7,7 +7,7 @@ def get_multichoice_input(options):
 def get_valid_integer(length):
     while True:
         try:
-            choice = int(input(f"Enter choice (1-{length}): "))
+            choice = int(input(f"\nEnter choice (1-{length}): \n"))
 
             if choice in range(length):
                 return choice

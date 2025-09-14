@@ -74,7 +74,7 @@ def start_game():
 
 def test_battle():
     player = Player()
-    enemy = enemyfactory.create_josh()
+    enemy = enemyfactory.create_goblin()
     Battle.start_battle(player, enemy)
 
 
