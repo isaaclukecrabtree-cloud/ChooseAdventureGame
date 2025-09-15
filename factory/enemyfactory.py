@@ -10,7 +10,7 @@ def create_ogre():
 
 
 def create_josh():
-    return Enemy("Josh", 100, 100)
+    return Enemy("Josh", 1, 1000)
 
 
 def create_demon():

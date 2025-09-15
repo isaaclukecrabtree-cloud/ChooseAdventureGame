@@ -1,7 +1,7 @@
 from events import path_event
 
 
-def run_game_loop(game_player, max_events=10):
+def run_game_loop(game_player, max_events=30):
     for i in range(max_events):
         if game_player.health <= 0:
             print("You have died! Game Over.")

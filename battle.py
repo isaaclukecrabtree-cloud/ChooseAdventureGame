@@ -13,18 +13,17 @@ class Battle:
         self.end_battle()
 
     def start_battle(self):
-        # return immediately if player or enemy doesn't exist
         if not (self.player and self.enemy):
             print("Can't start battle, one or more entities unresolved.")
             return
 
-        # battle loop
         while self.player.health > 0 and self.enemy.health > 0 and not self.fled:
             player_name_len = len(self.player.name)
             enemy_name_len = len(self.enemy.name)
 
             print(f"\n{self.player.name} HP: {self.player.health} | {self.enemy.name} HP: {self.enemy.health}")
-            print(f"{' ' * player_name_len}Dmg: {self.player.get_damage()} | {' ' * enemy_name_len}Dmg: {self.enemy.get_damage()}")
+            print(
+                f"{' ' * player_name_len}Dmg: {self.player.get_damage()} | {' ' * enemy_name_len}Dmg: {self.enemy.get_damage()}")
 
             self.__player_turn()
             self.__enemy_turn()
@@ -34,8 +33,15 @@ class Battle:
             print(f"\n{self.player.name} escaped from battle!")
         elif self.enemy.health <= 0:
             print(f"\n{self.enemy.name} has been defeated!")
+            xp_reward = self.calculate_xp_reward()
+            self.player.gain_xp(xp_reward)
         elif self.player.health <= 0:
             print(f"\n{self.player.name} has been defeated!")
+
+    def calculate_xp_reward(self):
+        # XP based on enemy hp and dmg
+        base_xp = (self.enemy.max_health + self.enemy.base_damage)
+        return max(1, min(100, base_xp))
 
     def end_battle(self):
         self.player = None
