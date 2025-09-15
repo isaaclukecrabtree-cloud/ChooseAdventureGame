@@ -60,13 +60,3 @@ class Weapon:
 
     def __str__(self) -> str:
         return f"{self.colour}{self.rarity.display_name} {self.name}{Colour.RESET.value} (+{self.total_damage} damage)"
-
-
-def create_random_weapon() -> Weapon:
-    weapon_type = random.choice(list(WeaponType))
-    rarity = random.choice(list(Rarity))
-    return Weapon(weapon_type, rarity)
-
-
-def create_weapon(weapon_type: WeaponType, rarity: Rarity) -> Weapon:
-    return Weapon(weapon_type, rarity)
