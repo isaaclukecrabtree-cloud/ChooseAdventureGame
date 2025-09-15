@@ -1,14 +1,13 @@
-import tkinter as tk
+from util.multichoiceinput import get_multichoice_input
 from factory import enemyfactory
 from battle import Battle
 import random
-from util.multichoiceinput import get_multichoice_input
+from factory.eventfactory import create_path_scenario, get_random_enemy_type
+
 
 def enemy_event(player, enemy_type="Goblin"):
-    enemy_types = ["Goblin", "Ogre", "Josh", "Demon"]
-
     if enemy_type == "random":
-        enemy_type = random.choice(enemy_types)
+        enemy_type = get_random_enemy_type()
 
     print(f"A {enemy_type} appears!")
 
@@ -26,6 +25,7 @@ def enemy_event(player, enemy_type="Goblin"):
 
     Battle(player, enemy)
 
+
 def safe_event(player):
     print("You find a clear and calm area to rest")
     print(f"You awake feeling refreshed.")
@@ -37,34 +37,10 @@ def building_event(player):
 
 
 def path_event(player):
-    scenarios = [
-        {
-            "description": "The path splits into two directions.",
-            "choices": ["Go left", "Go right"]
-        },
-        {
-            "description": "You see a mysterious glow in the distance.",
-            "choices": ["Continue on the path", "Go towards the glow"]
-        },
-        {
-            "description": "The road forks at a weathered signpost.",
-            "choices": ["Take the mountain path", "Take the forest path"]
-        },
-        {
-            "description": "You hear strange sounds echoing from different directions.",
-            "choices": ["Follow the loud sounds", "Head away from the noises"]
-        },
-        {
-            "description": "Two bridges cross a rushing river ahead.",
-            "choices": ["Take the stone bridge", "Take the wooden bridge"]
-        }
-    ]
-
-    scenario = random.choice(scenarios)
+    scenario = create_path_scenario()
 
     print(scenario["description"])
     choice = get_multichoice_input(scenario["choices"])
-
     chosen_path = scenario["choices"][choice - 1]
     print(f"You chose: {chosen_path}")
     print("You continue on your journey...")
@@ -76,6 +52,7 @@ def path_event(player):
         next_event(player, "random")
     else:
         next_event(player)
+
 
 def random_event(player):
     events = [enemy_event, safe_event, building_event]
