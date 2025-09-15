@@ -1,5 +1,6 @@
 from util.multichoiceinput import get_multichoice_input
 import random
+import time
 
 
 class Battle:
@@ -51,23 +52,32 @@ class Battle:
             case 1:
                 print(f"You attack enemy for {self.player.get_damage()} damage.")
                 self.enemy.take_damage(self.player.get_damage())
+                time.sleep(0.5)
             case 2:
                 print("Defended")
                 self.player.blocking = True
+                time.sleep(0.5)
             case 3:
                 if random.random() < 0.5:
                     print("You successfully fled from combat!")
                     self.fled = True
+                    time.sleep(0.5)
                 else:
                     print("You tried to flee but couldn't escape!")
+                    time.sleep(0.5)
 
     def __enemy_turn(self):
+        if self.enemy.health <= 0 or self.fled:  # Combined check
+            return
+
         choice = random.choice([1, 2])
 
         match choice:
             case 1:
-                print(f"{self.enemy.name} attacks!")
+                print(f"{self.enemy.name} attacks for {self.enemy.get_damage()} damage.!")
                 self.player.take_damage(self.enemy.get_damage())
+                time.sleep(0.5)
             case 2:
                 print(f"{self.enemy.name} defends!")
                 self.enemy.blocking = True
+                time.sleep(0.5)

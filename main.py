@@ -5,7 +5,7 @@ from weapon import WeaponType, Rarity, Weapon
 from battle import Battle
 from factory import enemyfactory
 from enemy import Enemy
-
+from events import random_event, path_event
 
 # region
 
@@ -31,7 +31,7 @@ def character_create():
     selected_class = choose_class()
     new_player.set_class(selected_class)
 
-    print(f"Wizard: Ahh! So you are {player_name} the {new_player.character_class}")
+    print(f"Wizard: Ahh! So you are {player_name} the {new_player.character_class.display_name}")
     new_player.display_stats()
 
     return new_player
@@ -67,5 +67,14 @@ def start_game():
 
 if __name__ == "__main__":
     game_player = start_game()
-    enemy = enemyfactory.create_goblin()
-    Battle(game_player, enemy)
+
+    for i in range(10):
+        if game_player.health > 0:
+            print(f"\nEvent {i + 1}")
+            path_event(game_player)
+        else:
+            print("You have died! Game Over.")
+            break
+
+    if game_player.health > 0:
+        print(f"\nCongratulations! You survived all 10 events with {game_player.health}/{game_player.max_health} HP remaining!")

@@ -13,12 +13,13 @@ class Player(Lifeform):
         self.character_class = None
         self.weapon = None
 
-    def set_class(self, character_class: CharacterClass):
-        self.character_class = character_class.display_name
+    def set_class(self, character_class):
+        self.character_class = character_class
+        self.health = character_class.max_health
+        self.max_health = character_class.max_health
+        self.base_damage = character_class.base_damage
         self.charisma = character_class.charisma
         self.stealth = character_class.stealth
-        self.max_health = character_class.max_health
-        self.health = self.max_health
 
     def equip_weapon(self, weapon):
         self.equipped_weapon = weapon
@@ -28,7 +29,7 @@ class Player(Lifeform):
         print(f'''Your character details:
         
         Name: {self.name}
-        Class: {self.character_class}
+        Class: {self.character_class.display_name}
         Health: {self.health}/{self.max_health}
         Damage: {self.base_damage}
         Stealth: {self.stealth}
