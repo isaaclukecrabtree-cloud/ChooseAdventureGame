@@ -23,6 +23,8 @@ def enemy_event(player, enemy_type="Goblin"):
         print(f"Unknown enemy type: {enemy_type}, defaulting to Goblin")
         enemy = enemyfactory.create_goblin()
 
+    enemy.scale_to_player_level(player.level)
+
     Battle(player, enemy)
 
 
