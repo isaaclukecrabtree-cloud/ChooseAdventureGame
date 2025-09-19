@@ -31,15 +31,15 @@ class Player(Lifeform):
         old_damage = self.base_damage
 
         if self.character_class == CharacterClass.WARRIOR:
-            self.max_health += 3
-            self.base_damage += 1
+            self.max_health += 4
+            self.base_damage += 2
         elif self.character_class == CharacterClass.ASSASSIN:
             self.max_health += 2
             self.base_damage += 2
-            self.stealth += 1
+            self.stealth += 2
         elif self.character_class == CharacterClass.TANK:
-            self.max_health += 4
-            self.base_damage += 1
+            self.max_health += 5
+            self.base_damage += 2
 
         self.health = self.max_health
 
