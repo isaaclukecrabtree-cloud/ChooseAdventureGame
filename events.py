@@ -44,8 +44,7 @@ def path_event(player):
     print(scenario["description"])
     choice = get_multichoice_input(scenario["choices"])
     chosen_path = scenario["choices"][choice - 1]
-    print(f"You chose: {chosen_path}")
-    print("You continue on your journey...")
+    print(f"You {chosen_path}")
 
     other_events = [enemy_event, safe_event, building_event]
     next_event = random.choice(other_events)
