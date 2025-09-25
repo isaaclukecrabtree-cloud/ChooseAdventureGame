@@ -27,6 +27,30 @@ def create_path_scenario():
     ]
     return random.choice(scenarios)
 
+def create_building_scenario():
+    scenarios = [
+        {
+            "description": "A seemingly abandoned building can be seen in the distance.",
+            "choices": ["Explore the building", "Don't explore, continue on your path"]
+        },
+        {
+            "description": "An old watchtower stands crumbling ahead of you.",
+            "choices": ["Climb the watchtower", "Walk around it"]
+        },
+        {
+            "description": "You discover a mysterious cave entrance carved into the hillside.",
+            "choices": ["Enter the cave", "Stay outside and rest"]
+        },
+        {
+            "description": "A rundown tavern sits empty by the roadside.",
+            "choices": ["Search the tavern", "Keep walking"]
+        },
+        {
+            "description": "An ancient shrine covered in vines blocks your path.",
+            "choices": ["Investigate the shrine", "Find another way around"]
+        }
+    ]
+    return random.choice(scenarios)
 
 def get_random_enemy_type():
     enemy_types = ["Goblin", "Ogre", "Josh", "Demon"]
